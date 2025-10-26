@@ -50,9 +50,13 @@ Here, the high-quality homozygous SNPs for each reciprocal cross are intersected
 ## Targe descriptions
 ### 11_F2_fetch_mRNA
 RNA seq reads for F2 samples are retrieved from SRA.
+
 ### 12_F2rawQC
 Performs fastp on F2 mRNA fastq files and multiQC to compare before/after low quality read and adapter trimming.
+
 ### 13_F2_align_F1transcriptome
 The mRNA-seq reads for each F2 sample are aligned to their respective parental F1 transcriptomes.
 
+### 14
+Post-processing of mRNA seq alignment and allele-specific read counting.
 
