@@ -47,7 +47,7 @@ Here, the high-quality homozygous SNPs for each reciprocal cross are intersected
 - Finally, the script annotates the genes with the positions of informative F1 SNPs. These SNPs will be later subset to those within the longest transcript for each gene. Mitochondrial genes (on the chromosome with nucleotide accession “NC_001566.1”) are filtered, as these are innapropriate for assessing parent-of-origin effects (as all mitochondrial genes will be maternally expressed).
 
 # Quantification of F2 allele-specific transcription
-## Targe descriptions
+## Target descriptions
 ### 11_F2_fetch_mRNA
 RNA seq reads for F2 samples are retrieved from SRA.
 
