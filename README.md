@@ -1,6 +1,6 @@
 
 # Generation of F1 genomes
-## Target descriptions
+## ref_genome
 ### Amel_ref
 Retrieves apis mellifera reference genome
 ### 1_prefetchWGS
