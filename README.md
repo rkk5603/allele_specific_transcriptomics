@@ -37,7 +37,7 @@ GGGAATTGCCA....
 This step is critical for the final mRNA-seq allele-specific read counting step as the chromosome field of the annotation file used to assign counts to transcripts must match the chromosome field of the alignment files used for counting.
 
 ### 9_construct_F1_transctiptomes
-This step assembles F1 transcriptomes using the gtf file retrieved from the F1 RNA seq run.
+This step assembles F1 transcriptomes using the gtf reference.
 
 ### 10_annotate_F1_SNPs
 Here, the high-quality homozygous SNPs for each reciprocal cross are intersected to find those that are unique to each parent but shared between the crosses. This target does three things:
