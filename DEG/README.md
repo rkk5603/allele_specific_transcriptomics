@@ -37,7 +37,7 @@ bash featurecounts_par.sh
 ```
 With the counts.txt file, the matrix target performs three functions:
 - counts_csv: converts counts.txt to .csv
-- tx2gene: obtains informative gene names for the specified model (default homo sapien)
+- tx2gene: obtains informative gene names for the specified model (MAPPING)
 - inform_geneIDs: adds the informative gene names to counts.csv
 
 ```
@@ -93,7 +93,7 @@ ENSG00000128245.14,3.9e-21,0
 ENSG00000130540.13,5.2e-21,0
 ENSG00000251322.7,5.4e-21,0
 ```
-### Perform functional enrichment analysis on your differentially expressed genes
+### Functional enrichment of differentially expressed genes
 The enrichment target in the Makefile calls bio gprofiler to generate a gene homology csv using the edger.csv file.
 ```
 make enrichment ORGANISM=hsapiens
