@@ -43,24 +43,20 @@ With the counts.txt file, the matrix target performs three functions:
 ```
 make matrix MAPPING=dmelanogaster_gene_ensembl
 ```
-### Generate PCA and heatmap visualizations of your data
+## Generate PCA and heatmap
 The pca target in the Makefile calls two R scripts in the src toolkit.
 - The edger.r script will process the counts.csv file to produce a differentially expressed genes matrix
 - The plot_pca.r script will constuct a PC plot using the generated edger.csv file and design.csv.
 ```
 make pca
 ```
-<img width="832" height="235" alt="image" src="https://github.com/user-attachments/assets/e6a16d0e-9b94-4a75-9c52-a283de483bb7" />
 
 The heatmap target calls the plot_heatmap.r script to generate a heatmap for the differential expressed genes from the edger.csv file.
 ```
 make heatmap
 ```
-<img width="686" height="776" alt="image" src="https://github.com/user-attachments/assets/717a0139-d726-4ba3-875b-09aa2f1b5a67" />
 
-Everything is coming to fruition. This makes me happy.
-
-### Identify a set of differentially expressed genes or transcripts
+## Identify differentially expressed genes or transcripts
 From the edger.csv file, there are 299 genes that are differentially expressed after accounting for FDR.
 ```
 # Initializing edgeR tibble dplyr tools ... done
