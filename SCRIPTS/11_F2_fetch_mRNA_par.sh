@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=0:10:00
+#SBATCH --mem-per-cpu=1gb
+#SBATCH --partition=open
+
+SCRIPTS=~/work/AST/SCRIPTS
+DIR_RAW=~/scratch/AST/RAW/mRNA
+
+#creats an array of IDs (for Sean's parental WGS files) to retrieve from sra
+FILES=(SRR28865816 SRR28865815 SRR28865811 SRR28865812 \
+        SRR28865777 SRR28865776 SRR28865775 SRR28865774 \
+        SRR28865773 SRR28865772 SRR28865770 SRR28865769 \
+        SRR28865768 SRR28865771 SRR28865767 SRR28865808 \
+        SRR28865806 SRR28865804 SRR28865803 SRR28865802)
+
+for FILE in ${FILES[@]}
+do
+	sbatch ${SCRIPTS}/11_F2_fetch_mRNA_chil.sh ${FILE} ${DIR_RAW}
+done
