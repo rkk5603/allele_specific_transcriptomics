@@ -9,12 +9,12 @@ Here, a differential gene expression analysis is performed for "good" and "bad" 
 Two bash scripts are included for the bowtie alignment. The align_chil.sh script calls the "align" target in the Makefile. The align_par.sh script submits jobs to Penn State Roar, calling the align_chil.sh script for each of 24 RNA seq samples. First, a design.csv needs to be written for the samples, including at least two columns, "sample" and "group".
 ```
 sample,group
-A,good
-B,good
-C,good
-D,bad
-E,bad
-F,bad
+G50_14,good
+G50_22,good
+G50_62,good
+G50_12,bad
+G50_25,bad
+G50_60,bad
 ```
 
 Before the alignment, a reference genome needs to be retrieved. Here, I retrieve the Apis mellifera ref genome in fasta, gff, and gtf format.
@@ -50,48 +50,31 @@ The pca target in the Makefile calls two R scripts in the src toolkit.
 ```
 make pca
 ```
-
-The heatmap target calls the plot_heatmap.r script to generate a heatmap for the differential expressed genes from the edger.csv file.
+edger.r output: 
 ```
-make heatmap
-```
-
-## Identify differentially expressed genes or transcripts
-From the edger.csv file, there are 299 genes that are differentially expressed after accounting for FDR.
-```
-# Initializing edgeR tibble dplyr tools ... done
+Initializing edgeR tibble dplyr tools ... done
 # Tool: edgeR
 # Design: design.csv
 # Counts: counts.csv
 # Sample column: sample
 # Factor column: group
-# Factors: HBR UHR
-# Group HBR has 3 samples.
-# Group UHR has 3 samples.
+# Factors: good bad
+# Group good has 12 samples.
+# Group bad has 12 samples.
 # Method: glm
-# Input: 1371 rows
-# Removed: 993 rows
-# Fitted: 378 rows
-# Significant PVal:  304 ( 80.40 %)
-# Significant FDRs:  299 ( 79.10 %)
+# Input: 12356 rows
+# Removed: 2385 rows
+# Fitted: 9971 rows
+# Significant PVal:  258 ( 2.60 %)
+# Significant FDRs:    0 ( 0.00 %)
 # Results: edger.csv
 ```
+PCA:
+<img width="829" height="754" alt="image" src="https://github.com/user-attachments/assets/7afc8592-8526-4d0d-8bed-e7ab34c8b507" />
 
-The first 299 rows should be genes that are differentially expressed, with FDRs of 0.
+The heatmap target calls the plot_heatmap.r script to generate a heatmap for the differential expressed genes from the edger.csv file.
 ```
-$ cat edger.csv | cut -f 1,8,10 -d ',' | head
-```
-```
-name,PValue,FDR
-ENSG00000211677.2,2.1e-27,0
-ENSG00000211679.2,1.4e-23,0
-ENSG00000100167.19,6.2e-23,0
-ENSG00000100321.14,6.7e-23,0
-ENSG00000100095.18,9.3e-22,0
-ENSG00000008735.13,1.2e-21,0
-ENSG00000128245.14,3.9e-21,0
-ENSG00000130540.13,5.2e-21,0
-ENSG00000251322.7,5.4e-21,0
+make heatmap
 ```
 ### Functional enrichment of differentially expressed genes
 The enrichment target in the Makefile calls bio gprofiler to generate a gene homology csv using the edger.csv file.
